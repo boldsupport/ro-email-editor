@@ -25,6 +25,25 @@ $(function() {
 		$(this).select();
 	});
 
+	$('#copy-text').click(function() {
+		copyToClipboard($('#results'));
+	});
+
+
+function copyToClipboard(elem) {
+	 var copyTextarea = elem;
+	 copyTextarea.select();
+
+	 try {
+	   var successful = document.execCommand('copy');
+	   var msg = successful ? 'successful' : 'unsuccessful';
+	   console.log('Copying text command was ' + msg);
+	 } catch (err) {
+	   console.log('Oops, unable to copy');
+	 }
+	 copyTextarea.disabled = true;
+}
+
 
 function makeRequest() {
 	$.ajax({
