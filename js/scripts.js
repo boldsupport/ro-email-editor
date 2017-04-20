@@ -13,7 +13,6 @@ $(function() {
 
 	// Listen for the click on the submit button
 	$('#get-results').on('click', function(e) {
-	    e.preventDefault();
 	    // Get the values of the inputs in the form
 	    getFormValues();
 
