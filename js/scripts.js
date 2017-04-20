@@ -29,7 +29,6 @@ $(function() {
 function makeRequest() {
 	$.ajax({
 	    	url: './js/manage_sub.hbs',
-	    	success: console.log('success')
 	    }).done(function(templateData) {
 	    	// Compile the template
 			var template = Handlebars.compile(templateData);
