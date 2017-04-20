@@ -14,7 +14,6 @@
 #info-form {
 	padding: 20px;
 	padding-right: 50px;
-	max-height: 45%;
 }
 
 #output {
@@ -52,6 +51,7 @@
 .preview {
 	padding: 20px 0;
 	max-width: 45%;
+	min-width: 700px;
 	border-left: 2px solid rgba(0,0,0,0.2);
 	background: #333333;
 }
