@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bold Recurring Orders Email Editor</title>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://static.boldcommerce.com/bevy/v1/bevy.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+
+    <header class="masthead">
+  <nav class="app-nav">
+    <a href="/bevy/" class="masthead-logo" target="_self" title="Dashboard">
+      <img src="img/logo.svg" alt="Bold Logo" >
+    </a>
+
+    <div class="primary-nav">
+      <ul class="nav nav-bar">
+        <li class="nav-item nav-item-active">
+          <a href="#" class="nav-link">Email Editor</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Documentation</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div class="form-container">
+<div class="grid">
+<div class="main-column column half">
+<h1>Bold Commerce Email Editor for Recurring Orders</h1>
+<p class="intro">This is a basic email editor for the default email theme for Recurring Orders</p>  
+
+<form action="" id="info-form">
+    <h2 class="heading-two">Common Settings</h2>
+    <div class="url field">
+        <label for="logo-urls" class="field-label">Enter the URL for your logo</label>
+        <div class="field-group">
+            <span class="field-group-addon">http://</span>
+            <input type="text" name="" id="logo-urls" class="input-field" value="placehold.it/200X200" placeholder="http://placehold.it/200X200" />
+        </div>
+
+        <p class="field-description">Please make sure to only use Absolute URLs (For Example: http://placehold.it/200X199)</p>
+    </div><!-- url -->
+
+    <div class="grid">
+        <div class="field column half">
+            <label for="font-color" class="field-label">Color of the text in the email</label>
+            <input type="text" name="" id="font-color" class="input-field jscolor {hash:true}" value="#101010" placeholder="Default: #101010" />
+            <p class="field-description">Only Hexadecimal values (#FFFFFF or #FFF)</p>
+        </div><!-- font-color -->
+
+        <div class="field column half">
+            <label for="main-bg" class="field-label">Email Background Color</label>
+            <input type="text" name="" id="main-bg" class="input-field jscolor {hash:true}" value="#FFFFFF" placeholder="Default: #FFFFFF" />
+            <p class="field-description">Only Hexadecimal values (#FFFFFF or #FFF)</p>
+        </div><!-- main-bg -->
+    </div>
+
+    <div class="grid">
+        <div class="field column half">
+            <label for="main-border-color" class="field-label">Color of the border for the email</label>
+            <input type="text" name="" id="main-border-color" class="input-field jscolor {hash:true}" value="#999999" placeholder="Default: #999999" />
+            <p class="field-description">Only Hexadecimal values (#FFFFFF or #FFF)</p>
+        </div><!-- main-border-color -->
+        <div class="field column half">
+            <label for="main-border-size" class="field-label">Size of the border of the email</label>
+            <div class="field-group">
+                <input type="text" name="" id="main-border-size" class="input-field" value="20" placeholder="Default: 20px" />
+                <span class="field-group-addon">px</span>
+            </div>
+            <p class="field-description">Numbers only (in px)</p>
+        </div><!-- main-border-size -->
+    </div>
+    <!-- Common Settings -->
+
+    <h2 class="heading-two">Main Section</h2>
+    <div class="grid">
+        <div class="field column half">
+            <label for="heading-color" class="field-label">Color of the headings in the header area</label>
+            <input type="text" name="" id="heading-color" class="input-field jscolor {hash:true}" value="#101010" placeholder="Default: #101010" />
+            <p class="field-description">Only Hexadecimal values (#FFFFFF or #FFF)</p>
+        </div><!-- heading-color -->
+
+        <div class="field column half">
+            <label for="cta-bg" class="field-label">Background Color of the Main Section of the email</label>
+            <input type="text" name="" id="cta-bg" class="input-field jscolor {hash:true}" value="#F2F2F2" placeholder="Default: #F2F2F2" />
+            <p class="field-description">Only Hexadecimal values (#FFFFFF or #FFF)</p>
+        </div><!-- cta-bg -->
+    </div>
+    <h3 class="heading-three">Buttons</h3>
+    <div class="grid">
+        <div class="field column half">
+            <label for="button-color" class="field-label">Color of the text in the buttons and the links</label>
+            <input type="text" name="" id="button-color" class="input-field jscolor {hash:true}" value="#FFFFFF" placeholder="Default: #FFFFFF" />
+            <p class="field-description">Only Hexadecimal values (#FFFFFF or #FFF)</p>
+        </div><!-- button-color -->
+
+        <div class="field column half">
+            <label for="button-bg-color" class="field-label">Background color of the buttons</label>
+            <input type="text" name="" id="button-bg-color" class="input-field jscolor {hash:true}" value="#999" /" placeholder="Default: #999" />
+            <p class="field-description">Only Hexadecimal values (#FFFFFF or #FFF)</p>
+        </div><!-- button-bg-color -->
+    </div>
+        <div class="field">
+            <label for="border-radius" class="field-label">Border Roundness (Type in 0 for no roundness)</label>
+            <div class="field-group">
+                <input type="text" name="" id="border-radius" class="input-field" value="25" placeholder="Default: 25px" />
+                <span class="field-group-addon">px</span>
+            </div>
+            <p class="field-description">Numbers only (in px)</p>
+        </div><!-- border-radius -->
+    <!-- Main Section -->
+
+    <h2 class="heading-two">Footer Section</h2>
+    <div class="grid">
+        <div class="field column half">
+            <label for="footer-bg" class="field-label">Color of the background of the footer section</label>
+            <input type="text" name="" id="footer-bg" class="input-field jscolor {hash:true}" value="#F2F2F2" placeholder="Default: #F2F2F2" />
+            <p class="field-description">Only Hexadecimal values (#FFFFFF or #FFF)</p>
+        </div><!-- footer-bg -->
+        <div class="field column half">
+            <label for="footer-color" class="field-label">Color of the text in the footer section</label>
+            <input type="text" name="" id="footer-color" class="input-field jscolor {hash:true}" value="#575757" placeholder="Default: #575757" />
+            <p class="field-description">Only Hexadecimal values (#FFFFFF or #FFF)</p>
+        </div><!-- footer-color -->
+    </div>
+
+    <div class="grid">
+        <div class="field column half">
+            <label for="footer-button-color" class="field-label">Color of the text of the button</label>
+            <input type="text" name="" id="footer-button-color" class="input-field jscolor {hash:true}" value="#555" placeholder="Default: #555" />
+            <p class="field-description">Only Hexadecimal values (#FFFFFF or #FFF)</p>
+        </div><!-- footer-button-color -->
+
+        <div class="field column half">
+            <label for="footer-button-bg-color" class="field-label">Color of the background of the button</label>
+            <input type="text" name="" id="footer-button-bg-color" class="input-field jscolor {hash:true}" value="#FAFAFA" placeholder="Default: #FAFAFA" />
+            <p class="field-description">Only Hexadecimal values (#FFFFFF or #FFF)</p>
+        </div><!-- footer-button-bg-color -->
+    </div>
+        <div class="field">
+            <label for="footer-button-border" class="field-label">Color of the border of the button</label>
+            <input type="text" name="" id="footer-button-border" class="input-field jscolor {hash:true}" value="#999999" value="#999999" placeholder="Default: #999999" />
+            <p class="field-description">Only Hexadecimal values (#FFFFFF or #FFF)</p>
+        </div><!-- footer-button-border -->
+    <!-- Footer Section -->
+
+        <!-- Submit Button -->
+        <input type="submit" id="get-results" class="btn btn-primary">
+</form><!-- End of the Form -->
+
+</div>
+    <!-- Output -->
+    <div class="preview column half">
+        <h3 class="heading-three">Preview of the email</h3>
+        <div id="preview">
+            
+        </div>
+    </div>
+</div>
+    <div id="output">
+        <label for="results" class="field-label">Output (Paste this output in your email editor in the app)</label>
+        <textarea name="" id="results" cols="200" rows="20" class="input-field"></textarea>
+    </div>
+
+    
+    <!-- Output -->
+</div><!-- container -->
+
+<script src="js/handlebars-v4.0.5.js"></script>        
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script src="js/jscolor.min.js"></script>
+<script src="js/scripts.js"></script>
+
+</body>
+</html>
