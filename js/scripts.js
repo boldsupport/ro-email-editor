@@ -137,6 +137,11 @@ $(function() {
 		}
 	});
 
+	// Listen for the change in the select menu for different templates
+	$('#emailTemplates').change(function() {
+		makeRequest(getFormValues());
+	});
+
 	// Listen for the click on the submit button
 	$('#get-results').on('click', function(e) {
 	    // Call the Template
@@ -169,8 +174,11 @@ function copyToClipboard(elem) {
 
 
 function makeRequest(inputData) {
+	var temp = $('#emailTemplates').val();
+		console.log(temp);
+		var templateFile = './js/' + temp + '.hbs';
 	$.ajax({
-	    	url: './js/manage_sub.hbs',
+	    	url: templateFile
 	    }).done(function(templateData) {
 	    	// Compile the template
 			var template = Handlebars.compile(templateData);

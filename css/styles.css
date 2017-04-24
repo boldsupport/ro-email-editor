@@ -114,3 +114,36 @@ hr {
 #custom-themes {
 	margin-top: 20px;
 }
+
+/* Choose Templates*/
+
+.preview .chooseTemplates {
+	max-width: 100%;
+    width: 700px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.preview .chooseTemplates label {
+	font-size: 20px;
+	color: #FFF;
+	display: inline-block;
+	font-weight: 100;
+	margin-top: 10px;
+	float: left;
+}
+
+.preview .chooseTemplates .field {
+	width: 100%;
+}
+
+
+
+
+.preview .chooseTemplates select {
+	display: inline-block;
+	float: left;
+	margin-left: 20px;
+	max-width: 300px;
+	font-size: 20px;
+}
