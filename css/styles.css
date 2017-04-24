@@ -1,3 +1,7 @@
+body {
+	position: relative;
+}
+
 .form-container {
 	margin-top: 50px;
     padding-right: 15px;
@@ -9,6 +13,15 @@
 
 .grid {
 	justify-content: space-between;
+}
+
+hr {
+	position: fixed;
+	height: 100vh;
+	width: 0px;
+	border-right: 5px solid #AAA;
+	left: 50%;
+	top: 0px;
 }
 
 #info-form {
@@ -58,13 +71,46 @@
 
 .preview .grid {
 	max-width: 100%;
+	width: 700px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+.preview .preview-buttons {
+	text-align: right;
+	padding: 0;
+}
+
+.preview .preview-heading {
+	padding: 0;
 }
 
 .preview h3 {
-	text-align: center;
+	text-align: left;
 	font-size: 24px;
 	color: #FFFFFF;
 	text-transform: uppercase;
 	font-weight: normal;
+	margin: 0;
+	padding-top: 15px;
+}
 
+@media screen and (max-width: 1600px) {
+	hr {
+		display: none;
+	}
+}
+
+
+
+/* Custom Themes */
+
+.toggle-field {
+	font-size: 24px;
+	font-weight: 100;
+
+}
+
+#custom-themes {
+	margin-top: 20px;
 }
