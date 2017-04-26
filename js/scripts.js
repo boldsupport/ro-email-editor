@@ -126,6 +126,13 @@ $(function() {
 	boldTheme: boldTheme
 	};
 
+	$("#main-border-size").keyup(function() {
+		var inputVal = $(this).val();
+		if(isNaN(inputVal)) {
+    		$("#main-border-size").val(this.value.match(/[0-9]*/));
+    	}
+	});
+
 	// Listen for a change on all the input of our form
 	$('input').change(function() {
 		if($(this).attr('name') === 'custom-themes') {
@@ -135,13 +142,9 @@ $(function() {
 		}
 		else {
 			var userValue = getFormValues();
+			console.log(userValue);
 			makeRequest(userValue);
 		}
-	});
-
-	// Listen for the change in the select menu for different templates
-	$('#emailTemplates').change(function() {
-		makeRequest(getFormValues());
 	});
 
 	// Listen for the click on the submit button
@@ -191,6 +194,8 @@ function makeRequest(inputData) {
 }
 
 function getFormValues() {
+
+
 		$fontColor = $('#font-color').val();
 		$mainBorderSize = $('#main-border-size').val();
 		$mainBg = $('#main-bg').val();
@@ -206,21 +211,6 @@ function getFormValues() {
 		$footerButtonColor = $('#footer-button-color').val();
 		$footerButtonBorder = $('#footer-button-border').val();
 		$footerButtonBgColor = $('#footer-button-bg-color').val();
-
-		$('#info-form').validate({
-			rules: {
-				'main-border-size': {
-					number: true
-				},
-				'border-radius': {
-					number: true
-				}
-			},
-
-			errorPlacement: function(error, element) {
-				return false;
-			}
-		});
 
 		if($mainBorderSize === '') {
 			$mainBorderSize = 20;
