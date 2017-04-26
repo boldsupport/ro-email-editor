@@ -62,11 +62,14 @@ hr {
 }
 
 .preview {
-	padding: 20px 0;
+	padding: 20px;
 	max-width: 45%;
 	min-width: 700px;
 	border-left: 2px solid rgba(0,0,0,0.2);
 	background: #333333;
+	overflow-x: auto;
+	max-height: 1500px;
+	overflow-y: auto;
 }
 
 .preview .grid {
@@ -146,4 +149,9 @@ hr {
 	margin-left: 20px;
 	max-width: 300px;
 	font-size: 20px;
+}
+
+.error {
+	color: #de3527;
+	border: 2px solid #de3527;
 }

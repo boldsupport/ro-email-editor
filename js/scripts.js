@@ -1,4 +1,6 @@
 $(function() {
+
+
 	var $fontColor, $mainBorderSize, $mainBg, $mainBorderColor, $logoUrls, $headingColor, $ctaBg, $buttonColor, $borderRadius, $buttonBgColor, $footerColor, $footerBg, $footerButtonColor, $footerButtonBorder, $footerButtonBgColor
 	// Build the Preview on page load
 	var inputData = getFormValues();
@@ -175,15 +177,12 @@ function copyToClipboard(elem) {
 
 function makeRequest(inputData) {
 	var temp = $('#emailTemplates').val();
-		console.log(temp);
 		var templateFile = './js/' + temp + '.hbs';
 	$.ajax({
 	    	url: templateFile
 	    }).done(function(templateData) {
 	    	// Compile the template
 			var template = Handlebars.compile(templateData);
-
-			console.log(inputData);
 	    	var result = template(inputData);
 	    	// Output the result on to the page
 			$('#results').val(result);
@@ -207,6 +206,29 @@ function getFormValues() {
 		$footerButtonColor = $('#footer-button-color').val();
 		$footerButtonBorder = $('#footer-button-border').val();
 		$footerButtonBgColor = $('#footer-button-bg-color').val();
+
+		$('#info-form').validate({
+			rules: {
+				'main-border-size': {
+					number: true
+				},
+				'border-radius': {
+					number: true
+				}
+			},
+
+			errorPlacement: function(error, element) {
+				return false;
+			}
+		});
+
+		if($mainBorderSize === '') {
+			$mainBorderSize = 20;
+		}
+
+		if($borderRadius === '') {
+			$borderRadius = 25;
+		}
 
 		var inputDataObject = {
 							'font-color': $fontColor,
