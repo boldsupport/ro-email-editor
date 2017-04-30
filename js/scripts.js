@@ -119,32 +119,96 @@ $(function() {
 		"footer-button-bg-color": "#EDEDED"
 		};
 
-	var themes = {defaultTheme: defaultTheme,
-	summerTheme: summerTheme,
-	darkTheme: darkTheme,
-	moonTheme: moonTheme,
-	boldTheme: boldTheme
+	var blueTheme = {
+	  "font-color": "#212121",
+	  "main-border-size": "5",
+	  "main-bg": "#1A237E",
+	  "main-border-color": "#1A237E",
+	  "logo-urls": "placehold.it/200X200",
+	  "heading-color": "#3392B5",
+	  "button-color": "#FFFFFF",
+	  "cta-bg": "#E8EAF6",
+	  "border-radius": "0",
+	  "button-bg-color": "#3F51B5",
+	  "footer-color": "#E8EAF6",
+	  "footer-bg": "#3F51B5",
+	  "footer-button-color": "#E8EAF6",
+	  "footer-button-border": "#7986CB",
+	  "footer-button-bg-color": "#7986CB"
 	};
 
-	$("#main-border-size").keyup(function() {
-		var inputVal = $(this).val();
-		if(isNaN(inputVal)) {
-    		$("#main-border-size").val(this.value.match(/[0-9]*/));
-    	}
-	});
+	var googleTheme = {
+	  "font-color": "#212121",
+	  "main-border-size": "10",
+	  "main-bg": "#795548",
+	  "main-border-color": "#5D4037",
+	  "logo-urls": "placehold.it/200X200",
+	  "heading-color": "#FFFFFF",
+	  "button-color": "#FFFFFF",
+	  "cta-bg": "#FFFFFF",
+	  "border-radius": "25",
+	  "button-bg-color": "#4CAF50",
+	  "footer-color": "#FFFFFF",
+	  "footer-bg": "#5D4037",
+	  "footer-button-color": "#FFFFFF",
+	  "footer-button-border": "#4CAF50",
+	  "footer-button-bg-color": "#4CAF50"
+	};
+
+	var amberTheme = {
+	  "font-color": "#613D00",
+	  "main-border-size": "10",
+	  "main-bg": "#FDFFD1",
+	  "main-border-color": "#FF5722",
+	  "logo-urls": "placehold.it/200X200",
+	  "heading-color": "#FF5722",
+	  "button-color": "#FDFFD1",
+	  "cta-bg": "#FDFFD1",
+	  "border-radius": "25",
+	  "button-bg-color": "#FFA000",
+	  "footer-color": "#FDFFD1",
+	  "footer-bg": "#FF5722",
+	  "footer-button-color": "#FF5722",
+	  "footer-button-border": "#FFA000",
+	  "footer-button-bg-color": "#FFA000"
+	};
+
+	var pinkTheme = {
+	  "font-color": "#EEEEEE",
+	  "main-border-size": "10",
+	  "main-bg": "#E91E63",
+	  "main-border-color": "#E91E63",
+	  "logo-urls": "placehold.it/200X200",
+	  "heading-color": "#FCE4EC",
+	  "button-color": "#FCE4EC",
+	  "cta-bg": "#263238",
+	  "border-radius": "15",
+	  "button-bg-color": "#E91E63",
+	  "footer-color": "#EEEEEE",
+	  "footer-bg": "#263238",
+	  "footer-button-color": "#E91E63",
+	  "footer-button-border": "#FCE4EC",
+	  "footer-button-bg-color": "#FCE4EC"
+	};
+
+	var themes = {
+		defaultTheme: defaultTheme,
+		summerTheme: summerTheme,
+		darkTheme: darkTheme,
+		moonTheme: moonTheme,
+		boldTheme: boldTheme,
+		blueTheme: blueTheme,
+		googleTheme: googleTheme,
+		amberTheme: amberTheme,
+		pinkTheme: pinkTheme
+	};
 
 	// Listen for a change on all the input of our form
+	$('input').keyup(function() {
+		processResults($(this));
+	});
 	$('input').change(function() {
-		if($(this).attr('name') === 'custom-themes') {
-			var themeName = $(this).val();
-			setFormValues(themes[themeName]);
-			makeRequest(themes[themeName]);
-		}
-		else {
-			var userValue = getFormValues();
-			console.log(userValue);
-			makeRequest(userValue);
-		}
+		processResults($(this));
 	});
 
 	// Listen for the click on the submit button
@@ -161,6 +225,29 @@ $(function() {
 	$('#copy-text').click(function() {
 		copyToClipboard($('#results'));
 	});
+
+function processResults(elem) {
+	if(elem.attr('name') === 'custom-themes') {
+			var themeName = elem.val();
+			setFormValues(themes[themeName]);
+			makeRequest(themes[themeName]);
+	}
+	else {
+		var inputVal = elem.val();
+		if(elem.hasClass('number') && isNaN(inputVal)) {
+			elem.val(inputVal.match(/[0-9]*/));
+			makeRequest(userValue);
+		}
+    	else {
+    		inputId = elem.attr('id');
+	    	var userValue = getFormValues();
+	    	if(inputVal.indexOf('#') < 0) {
+	    		userValue[inputId] = '#' + userValue[inputId];
+	    	}
+			makeRequest(userValue);
+    	}
+	}
+}
 
 
 function copyToClipboard(elem) {
@@ -220,23 +307,34 @@ function getFormValues() {
 			$borderRadius = 25;
 		}
 
+		// if($fontColor.indexOf('#') < 0) {
+		// 	$fontColor = '#' + $fontColor;
+		// }
+		// console.log($mainBg);
+		// console.log($mainBg.indexOf('#'));
+		// if($mainBg.indexOf('#') < 0) {
+		// 	$mainBg = '#' + $mainBg;
+		// 	console.log($mainBg);
+		// }
+
 		var inputDataObject = {
-							'font-color': $fontColor,
-							'main-border-size': $mainBorderSize,
-							'main-bg': $mainBg,
-							'main-border-color': $mainBorderColor,
-							'logo-urls': $logoUrls,
-							'heading-color': $headingColor,
-							'button-color': $buttonColor,
-							'cta-bg': $ctaBg,
-							'border-radius': $borderRadius,
-							'button-bg-color': $buttonBgColor,
-							'footer-color': $footerColor,
-							'footer-bg': $footerBg,
-							'footer-button-color': $footerButtonColor,
-							'footer-button-border': $footerButtonBorder,
-							'footer-button-bg-color': $footerButtonBgColor
-						};
+			'font-color': $fontColor,
+			'main-border-size': $mainBorderSize,
+			'main-bg': $mainBg,
+			'main-border-color': $mainBorderColor,
+			'logo-urls': $logoUrls,
+			'heading-color': $headingColor,
+			'button-color': $buttonColor,
+			'cta-bg': $ctaBg,
+			'border-radius': $borderRadius,
+			'button-bg-color': $buttonBgColor,
+			'footer-color': $footerColor,
+			'footer-bg': $footerBg,
+			'footer-button-bg-color': $footerButtonBgColor,
+			'footer-button-color': $footerButtonColor,
+			'footer-button-border': $footerButtonBorder,
+			'footer-button-bg-color': $footerButtonBgColor
+		};
 
 		return inputDataObject;
 	}
