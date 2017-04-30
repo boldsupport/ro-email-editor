@@ -229,6 +229,7 @@ $(function() {
 function processResults(elem) {
 	if(elem.attr('name') === 'custom-themes') {
 			var themeName = elem.val();
+			console.log(themeName);
 			setFormValues(themes[themeName]);
 			makeRequest(themes[themeName]);
 	}
