@@ -211,6 +211,10 @@ $(function() {
 		processResults($(this));
 	});
 
+	$('#emailTemplates').change(function() {
+		makeRequest(getFormValues());
+	});
+
 	// Listen for the click on the submit button
 	$('#get-results').on('click', function(e) {
 	    // Call the Template
@@ -229,7 +233,6 @@ $(function() {
 function processResults(elem) {
 	if(elem.attr('name') === 'custom-themes') {
 			var themeName = elem.val();
-			console.log(themeName);
 			setFormValues(themes[themeName]);
 			makeRequest(themes[themeName]);
 	}
@@ -245,6 +248,7 @@ function processResults(elem) {
 	    	if(inputVal.indexOf('#') < 0) {
 	    		userValue[inputId] = '#' + userValue[inputId];
 	    	}
+	    	console.log(userValue);
 			makeRequest(userValue);
     	}
 	}
@@ -268,7 +272,9 @@ function copyToClipboard(elem) {
 
 function makeRequest(inputData) {
 	var temp = $('#emailTemplates').val();
-		var templateFile = './js/' + temp + '.hbs';
+	var templateFile = './js/' + temp + '.hbs';
+
+	console.log(inputData);
 	$.ajax({
 	    	url: templateFile
 	    }).done(function(templateData) {
@@ -280,7 +286,6 @@ function makeRequest(inputData) {
 			$('#preview').html(result);
 	    });
 }
-
 function getFormValues() {
 
 
@@ -307,16 +312,6 @@ function getFormValues() {
 		if($borderRadius === '') {
 			$borderRadius = 25;
 		}
-
-		// if($fontColor.indexOf('#') < 0) {
-		// 	$fontColor = '#' + $fontColor;
-		// }
-		// console.log($mainBg);
-		// console.log($mainBg.indexOf('#'));
-		// if($mainBg.indexOf('#') < 0) {
-		// 	$mainBg = '#' + $mainBg;
-		// 	console.log($mainBg);
-		// }
 
 		var inputDataObject = {
 			'font-color': $fontColor,
@@ -356,8 +351,16 @@ function getFormValues() {
 		$('#footer-button-color').val(theme['footer-button-color']);
 		$('#footer-button-border').val(theme['footer-button-border']);
 		$('#footer-button-bg-color').val(theme['footer-button-bg-color']);
-	}
 
+		var colorInputs = $('.jscolor');
+
+		$.each(colorInputs, function(i, colorInput) {
+			var thisInput = $(this).val();
+		 	$(this).css('background', thisInput);
+		});
+
+
+	}
 
 });
 
