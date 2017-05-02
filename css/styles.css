@@ -37,6 +37,11 @@ body {
 	justify-content: space-between;
 }
 
+.intro {
+	margin: 0;
+	color: #666;
+}
+
 #info-form {
 	padding: 20px;
 	padding-left: 0px;
@@ -148,7 +153,12 @@ body {
 }
 
 
-
+h1, .h1 {
+    font-size: 24px;
+    line-height: 40px;
+    margin: 0;
+    font-weight: 400;
+}
 
 .preview .chooseTemplates select {
 	display: inline-block;
