@@ -4,6 +4,7 @@
   "description": "",
   "main": "scripts.js",
   "scripts": {
+    "serve": "live-server --port=3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
