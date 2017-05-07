@@ -21,7 +21,8 @@ $(function() {
 	  "footer-bg": "#F2F2F2",
 	  "footer-button-color": "#555555",
 	  "footer-button-border": "#999999",
-	  "footer-button-bg-color": "#FAFAFA"
+	  "footer-button-bg-color": "#FAFAFA",
+	  "footer-border-color": "#DDDDDD"
 	};
 
 
@@ -45,7 +46,8 @@ $(function() {
 	  "footer-bg": "#F2F2F2",
 	  "footer-button-color": "#555555",
 	  "footer-button-border": "#999999",
-	  "footer-button-bg-color": "#FAFAFA"
+	  "footer-button-bg-color": "#FAFAFA",
+	  "footer-border-color": "#DDDDDD"
 	};
 
 	var summerTheme = {
@@ -63,7 +65,8 @@ $(function() {
 	  "footer-bg": "#FFBA49",
 	  "footer-button-color": "#20A39E",
 	  "footer-button-border": "#999999",
-	  "footer-button-bg-color": "#F2ECD3"
+	  "footer-button-bg-color": "#F2ECD3",
+	  "footer-border-color": "#DDDDDD"
 	};
 
 	
@@ -82,7 +85,8 @@ $(function() {
 	  "footer-bg": "#101010",
 	  "footer-button-color": "#AAAAAA",
 	  "footer-button-border": "#AAAAAA",
-	  "footer-button-bg-color": "#101010"
+	  "footer-button-bg-color": "#101010",
+	  "footer-border-color": "#DDDDDD"
 	};
 	var moonTheme = {
 	  "font-color": "#101010",
@@ -99,7 +103,8 @@ $(function() {
 	  "footer-bg": "#F2F2F2",
 	  "footer-button-color": "#666666",
 	  "footer-button-border": "#E0E0E0",
-	  "footer-button-bg-color": "#FFFFFF"
+	  "footer-button-bg-color": "#FFFFFF",
+	  "footer-border-color": "#DDDDDD"
 	};
 	var boldTheme = {
 		"font-color": "#101010",
@@ -116,7 +121,8 @@ $(function() {
 		"footer-bg": "#EDEDED",
 		"footer-button-color": "#DD3626",
 		"footer-button-border": "#DD3626",
-		"footer-button-bg-color": "#EDEDED"
+		"footer-button-bg-color": "#EDEDED",
+	  	"footer-border-color": "#DDDDDD"
 		};
 
 	var blueTheme = {
@@ -134,7 +140,8 @@ $(function() {
 	  "footer-bg": "#3F51B5",
 	  "footer-button-color": "#E8EAF6",
 	  "footer-button-border": "#7986CB",
-	  "footer-button-bg-color": "#7986CB"
+	  "footer-button-bg-color": "#7986CB",
+	  "footer-border-color": "#DDDDDD"
 	};
 
 	var googleTheme = {
@@ -152,7 +159,8 @@ $(function() {
 	  "footer-bg": "#5D4037",
 	  "footer-button-color": "#FFFFFF",
 	  "footer-button-border": "#4CAF50",
-	  "footer-button-bg-color": "#4CAF50"
+	  "footer-button-bg-color": "#4CAF50",
+	  "footer-border-color": "#DDDDDD"
 	};
 
 	var amberTheme = {
@@ -170,7 +178,8 @@ $(function() {
 	  "footer-bg": "#FF5722",
 	  "footer-button-color": "#FF5722",
 	  "footer-button-border": "#FFA000",
-	  "footer-button-bg-color": "#FFA000"
+	  "footer-button-bg-color": "#FFA000",
+	  "footer-border-color": "#DDDDDD"
 	};
 
 	var pinkTheme = {
@@ -188,7 +197,8 @@ $(function() {
 	  "footer-bg": "#263238",
 	  "footer-button-color": "#E91E63",
 	  "footer-button-border": "#FCE4EC",
-	  "footer-button-bg-color": "#FCE4EC"
+	  "footer-button-bg-color": "#FCE4EC",
+	  "footer-border-color": "#DDDDDD"
 	};
 
 	var themes = {
@@ -304,6 +314,7 @@ function getFormValues() {
 		$footerButtonColor = $('#footer-button-color').val();
 		$footerButtonBorder = $('#footer-button-border').val();
 		$footerButtonBgColor = $('#footer-button-bg-color').val();
+		$footerBorderColor = $('#footer-border-color').val();
 
 		if($mainBorderSize === '') {
 			$mainBorderSize = 20;
@@ -329,7 +340,8 @@ function getFormValues() {
 			'footer-button-bg-color': $footerButtonBgColor,
 			'footer-button-color': $footerButtonColor,
 			'footer-button-border': $footerButtonBorder,
-			'footer-button-bg-color': $footerButtonBgColor
+			'footer-button-bg-color': $footerButtonBgColor,
+			'footer-border-color': $footerBorderColor
 		};
 
 		return inputDataObject;
@@ -351,15 +363,34 @@ function getFormValues() {
 		$('#footer-button-color').val(theme['footer-button-color']);
 		$('#footer-button-border').val(theme['footer-button-border']);
 		$('#footer-button-bg-color').val(theme['footer-button-bg-color']);
+		$('#footer-border-color').val(theme['footer-border-color']);
 
 		var colorInputs = $('.jscolor');
 
+		var thisInput, foregroundColor;
 		$.each(colorInputs, function(i, colorInput) {
-			var thisInput = $(this).val();
-		 	$(this).css('background', thisInput);
+			thisInput = $(this).val();
+			foregroundColor = reverseColor(thisInput);
+
+		 	
+
+		    $(this).css({
+		    	'background': thisInput,
+		    	'color': foregroundColor
+		    });
+
+		    $(this).trigger('change');
 		});
 
 
+	}
+
+	function reverseColor(hexColor) {
+		var r = parseInt(hexColor.substr(0,2),16);
+	    var g = parseInt(hexColor.substr(2,2),16);
+	    var b = parseInt(hexColor.substr(5,4),16);
+	    var yiq = ((r*300)+(g*587)+(b*114))/1000;
+	    return (yiq >= 128) ? 'black' : 'white';
 	}
 
 });
