@@ -1,0 +1,45 @@
+reset the table with border = 0 and cellpadding and cellspacing = 0
+set the images to disaply = block
+
+main table wrapper set it to 100% width
+
+width on the images
+
+
+
+
+background color go on the wrapper table with bg-color
+
+
+
+
+text on td-
+style="color: #FFFFFF; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 300; line-height: 24px;"
+
+styles always go to the tds for maximum compatibility
+
+
+buttons.cm
+
+
+
+
+
+
+
+
+
+
+
+
+
+preheader text
+<div style="display: none; font-size: 0px; line-height: 0px; max-height: 0px; max-width: 0px; width: 0px; opacity; 0; overflow: hidden">
+	Preheader text goes here
+
+</div>
+
+
+
+change the alt text's styles from the images by implementing styles in the style tag of the image
+
