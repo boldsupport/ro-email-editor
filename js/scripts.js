@@ -378,17 +378,15 @@ function getFormValues() {
 		    	'background': thisInput,
 		    	'color': foregroundColor
 		    });
-
-		    $(this).trigger('change');
 		});
 
 
 	}
 
 	function reverseColor(hexColor) {
-		var r = parseInt(hexColor.substr(0,2),16);
-	    var g = parseInt(hexColor.substr(2,2),16);
-	    var b = parseInt(hexColor.substr(5,4),16);
+		var r = parseInt(hexColor.substr(1,2),16);
+	    var g = parseInt(hexColor.substr(3,2),16);
+	    var b = parseInt(hexColor.substr(6,4),16);
 	    var yiq = ((r*300)+(g*587)+(b*114))/1000;
 	    return (yiq >= 128) ? 'black' : 'white';
 	}
