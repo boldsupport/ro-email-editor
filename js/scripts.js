@@ -282,7 +282,7 @@ function copyToClipboard(elem) {
 
 function makeRequest(inputData) {
 	var temp = $('#emailTemplates').val();
-	var templateFile = './js/' + temp + '.hbs';
+	var templateFile = './js/templates/' + temp + '.hbs';
 
 	console.log(inputData);
 	$.ajax({
