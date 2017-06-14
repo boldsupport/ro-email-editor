@@ -250,16 +250,21 @@ function processResults(elem) {
 		var inputVal = elem.val();
 		if(elem.hasClass('number') && isNaN(inputVal)) {
 			elem.val(inputVal.match(/[0-9]*/));
-			makeRequest(userValue);
-		}
-    	else {
-    		inputId = elem.attr('id');
+			console.log(elem.val());
+			makeRequest(getFormValues());
+			}
+		else if(elem.hasClass('jscolor')) {
+    		var inputId = elem.attr('id');
 	    	var userValue = getFormValues();
 	    	if(inputVal.indexOf('#') < 0) {
 	    		userValue[inputId] = '#' + userValue[inputId];
 	    	}
 	    	console.log(userValue);
 			makeRequest(userValue);
+    	}
+
+    	else {
+    		makeRequest(getFormValues());
     	}
 	}
 }
@@ -283,8 +288,6 @@ function copyToClipboard(elem) {
 function makeRequest(inputData) {
 	var temp = $('#emailTemplates').val();
 	var templateFile = './js/templates/' + temp + '.hbs';
-
-	console.log(inputData);
 	$.ajax({
 	    	url: templateFile
 	    }).done(function(templateData) {
@@ -296,9 +299,8 @@ function makeRequest(inputData) {
 			$('#preview').html(result);
 	    });
 }
+
 function getFormValues() {
-
-
 		$fontColor = $('#font-color').val();
 		$mainBorderSize = $('#main-border-size').val();
 		$mainBg = $('#main-bg').val();
@@ -317,11 +319,11 @@ function getFormValues() {
 		$footerBorderColor = $('#footer-border-color').val();
 
 		if($mainBorderSize === '') {
-			$mainBorderSize = 20;
+			$mainBorderSize = '20';
 		}
 
 		if($borderRadius === '') {
-			$borderRadius = 25;
+			$borderRadius = '25';
 		}
 
 		var inputDataObject = {
