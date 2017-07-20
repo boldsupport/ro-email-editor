@@ -1,11 +1,11 @@
 $(function() {
 
-
+	// Initialize all the theme variables
 	var $fontColor, $mainBorderSize, $mainBg, $mainBorderColor, $logoUrls, $headingColor, $ctaBg, $buttonColor, $borderRadius, $buttonBgColor, $footerColor, $footerBg, $footerButtonColor, $footerButtonBorder, $footerButtonBgColor
 	// Build the Preview on page load
 	var inputData = getFormValues();
 
-
+	// Default theme that is called on page load
 	var initialTheme = {
 	  "font-color": "#101010",
 	  "main-border-size": "20",
@@ -25,10 +25,8 @@ $(function() {
 	  "footer-border-color": "#DDDDDD"
 	};
 
-
+// Calling the initial theme on page load
 	makeRequest(initialTheme);
-
-
 
 	// Custom Themes
 	var defaultTheme = {
@@ -69,7 +67,6 @@ $(function() {
 	  "footer-border-color": "#DDDDDD"
 	};
 
-
 	var darkTheme = {
 	  "font-color": "#111111",
 	  "main-border-size": "10",
@@ -88,6 +85,7 @@ $(function() {
 	  "footer-button-bg-color": "#101010",
 	  "footer-border-color": "#DDDDDD"
 	};
+
 	var moonTheme = {
 	  "font-color": "#101010",
 	  "main-border-size": "0",
@@ -106,6 +104,7 @@ $(function() {
 	  "footer-button-bg-color": "#FFFFFF",
 	  "footer-border-color": "#DDDDDD"
 	};
+
 	var boldTheme = {
 		"font-color": "#101010",
 		"main-border-size": "20",
@@ -201,6 +200,7 @@ $(function() {
 	  "footer-border-color": "#DDDDDD"
 	};
 
+// Themes Object, carrying all the different themes
 	var themes = {
 		defaultTheme: defaultTheme,
 		summerTheme: summerTheme,
@@ -221,6 +221,7 @@ $(function() {
 		processResults($(this));
 	});
 
+// Listen for a change on the template selector
 	$('#emailTemplates').change(function() {
 		makeRequest(getFormValues());
 	});
@@ -236,16 +237,20 @@ $(function() {
 		$(this).select();
 	});
 
+// Copy Text
 	$('#copy-text').click(function() {
 		copyToClipboard($('#results'));
 	});
 
+// Process results on all changes
 function processResults(elem) {
+	// Listen for the changes on the custom themes
 	if(elem.attr('name') === 'custom-themes') {
 			var themeName = elem.val();
 			setFormValues(themes[themeName]);
 			makeRequest(themes[themeName]);
 	}
+	// Else it should be coming from the form
 	else {
 		var inputVal = elem.val();
 		if(elem.hasClass('number') && isNaN(inputVal)) {
@@ -253,6 +258,7 @@ function processResults(elem) {
 			console.log(elem.val());
 			makeRequest(getFormValues());
 			}
+			// If the input is based on color
 		else if(elem.hasClass('jscolor')) {
     		var inputId = elem.attr('id');
 	    	var userValue = getFormValues();
@@ -269,7 +275,7 @@ function processResults(elem) {
 	}
 }
 
-
+// Copy to Clipboard helper function
 function copyToClipboard(elem) {
 	 var copyTextarea = elem;
 	 copyTextarea.select();
@@ -284,10 +290,14 @@ function copyToClipboard(elem) {
 	 copyTextarea.disabled = true;
 }
 
-
+// Make the AJAX call
 function makeRequest(inputData) {
+	// Check which template is selected
 	var temp = $('#emailTemplates').val();
+	// Call the template
 	var templateFile = './js/templates/' + temp + '.hbs';
+
+	// Make the AJAX call
 	$.ajax({
 	    	url: templateFile
 	    }).done(function(templateData) {
@@ -300,6 +310,7 @@ function makeRequest(inputData) {
 	    });
 }
 
+// Get the form values
 function getFormValues() {
 		$fontColor = $('#font-color').val();
 		$mainBorderSize = $('#main-border-size').val();
@@ -318,6 +329,7 @@ function getFormValues() {
 		$footerButtonBgColor = $('#footer-button-bg-color').val();
 		$footerBorderColor = $('#footer-border-color').val();
 
+		// Validation for the empty inputs and insert the default values
 		if($mainBorderSize === '') {
 			$mainBorderSize = '20';
 		}
@@ -326,6 +338,7 @@ function getFormValues() {
 			$borderRadius = '25';
 		}
 
+		// Make the object with the inputted values
 		var inputDataObject = {
 			'font-color': $fontColor,
 			'main-border-size': $mainBorderSize,
@@ -349,6 +362,7 @@ function getFormValues() {
 		return inputDataObject;
 	}
 
+	// Set the form values
 	function setFormValues(theme) {
 		$('#font-color').val(theme['font-color']);
 		$('#main-border-size').val(theme['main-border-size']);
@@ -367,30 +381,29 @@ function getFormValues() {
 		$('#footer-button-bg-color').val(theme['footer-button-bg-color']);
 		$('#footer-border-color').val(theme['footer-border-color']);
 
+		// Get all the color inputs
 		var colorInputs = $('.jscolor');
 
-		var thisInput, foregroundColor;
+		var hexValue, foregroundColor;
 		$.each(colorInputs, function(i, colorInput) {
-			thisInput = $(this).val();
-			foregroundColor = reverseColor(thisInput);
+			hexValue = $(this).val();
+			foregroundColor = reverseColor(hexValue);
 
-
-
+			// Set the foreground color based on what the result returns form the reverseColor function
 		    $(this).css({
-		    	'background': thisInput,
+		    	'background': hexValue,
 		    	'color': foregroundColor
 		    });
 		});
-
-
 	}
 
+	// Reverse Color Helper Function
 	function reverseColor(hexColor) {
 		var r = parseInt(hexColor.substr(1,2),16);
-	    var g = parseInt(hexColor.substr(3,2),16);
-	    var b = parseInt(hexColor.substr(6,4),16);
-	    var yiq = ((r*300)+(g*587)+(b*114))/1000;
-	    return (yiq >= 128) ? 'black' : 'white';
+		var g = parseInt(hexColor.substr(3,2),16);
+		var b = parseInt(hexColor.substr(6,4),16);
+		var yiq = ((r*300)+(g*587)+(b*114))/1000;
+		return (yiq >= 128) ? 'black' : 'white';
 	}
 
 });
