@@ -1,7 +1,10 @@
 $(function() {
+
+
 	var $fontColor, $mainBorderSize, $mainBg, $mainBorderColor, $logoUrls, $headingColor, $ctaBg, $buttonColor, $borderRadius, $buttonBgColor, $footerColor, $footerBg, $footerButtonColor, $footerButtonBorder, $footerButtonBgColor
 	// Build the Preview on page load
 	var inputData = getFormValues();
+
 
 	var initialTheme = {
 	  "font-color": "#101010",
@@ -22,7 +25,10 @@ $(function() {
 	  "footer-border-color": "#DDDDDD"
 	};
 
+
 	makeRequest(initialTheme);
+
+
 
 	// Custom Themes
 	var defaultTheme = {
@@ -62,7 +68,8 @@ $(function() {
 	  "footer-button-bg-color": "#F2ECD3",
 	  "footer-border-color": "#DDDDDD"
 	};
-	
+
+
 	var darkTheme = {
 	  "font-color": "#111111",
 	  "main-border-size": "10",
@@ -81,7 +88,6 @@ $(function() {
 	  "footer-button-bg-color": "#101010",
 	  "footer-border-color": "#DDDDDD"
 	};
-
 	var moonTheme = {
 	  "font-color": "#101010",
 	  "main-border-size": "0",
@@ -100,7 +106,6 @@ $(function() {
 	  "footer-button-bg-color": "#FFFFFF",
 	  "footer-border-color": "#DDDDDD"
 	};
-
 	var boldTheme = {
 		"font-color": "#101010",
 		"main-border-size": "20",
@@ -264,6 +269,7 @@ function processResults(elem) {
 	}
 }
 
+
 function copyToClipboard(elem) {
 	 var copyTextarea = elem;
 	 copyTextarea.select();
@@ -277,6 +283,7 @@ function copyToClipboard(elem) {
 	 }
 	 copyTextarea.disabled = true;
 }
+
 
 function makeRequest(inputData) {
 	var temp = $('#emailTemplates').val();
@@ -367,13 +374,15 @@ function getFormValues() {
 			thisInput = $(this).val();
 			foregroundColor = reverseColor(thisInput);
 
-		 	
+
 
 		    $(this).css({
 		    	'background': thisInput,
 		    	'color': foregroundColor
 		    });
 		});
+
+
 	}
 
 	function reverseColor(hexColor) {
@@ -383,5 +392,5 @@ function getFormValues() {
 	    var yiq = ((r*300)+(g*587)+(b*114))/1000;
 	    return (yiq >= 128) ? 'black' : 'white';
 	}
-});
 
+});
