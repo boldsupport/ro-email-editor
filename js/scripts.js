@@ -384,4 +384,3 @@ function getFormValues() {
 	    return (yiq >= 128) ? 'black' : 'white';
 	}
 });
-
