@@ -4,22 +4,23 @@ $(function() {
 	var $fontColor, $mainBorderSize, $mainBg, $mainBorderColor, $logoUrls, $headingColor, $ctaBg, $buttonColor, $borderRadius, $buttonBgColor, $footerColor, $footerBg, $footerButtonColor, $footerButtonBorder, $footerButtonBgColor
 	// Build the Preview on page load
 	var inputData = getFormValues();
-  var ThemeClass = function(fontColor, mainBorderSize, mainBg, mainBorderColor, logoUrls, headingColor, ctaBg, buttonColor, borderRadius, buttonBgColor, footerColor, footerBg, footerButtonColor, footerButtonBorder, footerButtonBgColor) {
-    this.fontColor = fontColor;
-    this.mainBorderSize = mainBorderSize;
-    this.mainBg = mainBg;
-    this.mainBorderColor = mainBorderColor;
-    this.logoUrls = logoUrls;
-    this.headingColor = headingColor;
-    this.ctaBg = ctaBg;
-    this.buttonColor = buttonColor;
-    this.borderRadius = borderRadius;
-    this.buttonBgColor = buttonBgColor;
-    this.footerColor = footerColor;
-    this.footerBg = footerBg;
-    this.footerButtonColor = footerButtonColor;
-    this.footerButtonBorder = footerButtonBorder;
-    this.footerButtonBgColor = footerButtonBgColor;
+  var ThemeClass = function(fontColor, mainBorderSize, mainBg, mainBorderColor, logoUrls, headingColor, ctaBg, buttonColor, borderRadius, buttonBgColor, footerColor, footerBg, footerButtonColor, footerButtonBorder, footerButtonBgColor, footerBorderColor) {
+		this['font-color'] = fontColor;
+		this['main-border-size'] = mainBorderSize;
+		this['main-bg'] = mainBg;
+		this['main-border-color'] = mainBorderColor;
+		this['logo-urls'] = logoUrls;
+		this['heading-color'] = headingColor;
+		this['button-color'] = buttonColor;
+		this['cta-bg'] = ctaBg;
+		this['border-radius'] = borderRadius;
+		this['button-bg-color'] = buttonBgColor;
+		this['footer-color'] = footerColor;
+		this['footer-bg'] = footerBg;
+		this['footer-button-bg-color'] = footerButtonBgColor;
+		this['footer-button-color'] = footerButtonColor;
+		this['footer-button-border'] = footerButtonBorder;
+		this['footer-border-color'] = footerBorderColor;
   };
 
   // Default theme that is called on page load
@@ -34,140 +35,19 @@ $(function() {
 
 	var summerTheme = new ThemeClass("#0B3836","20","#20A39E","#FFBA49","placehold.it/200X200","#FFBA49","#F2ECD3","#166E6A","25","#FFBA49","#0B3836","#FFBA49","#20A39E","#999999","#F2ECD3","#DDDDDD");
 
+	var darkTheme = new ThemeClass("#111111","10","#101010","#000000","placehold.it/200X200","#FFFFFF","#FFFFFF","#FFFFFF","10","#101010","#FFFFFF","#101010","#AAAAAA","#AAAAAA","#101010","#DDDDDD");
 
+	var moonTheme = new ThemeClass("#101010","0","#F2F2F2","#999999","placehold.it/200X200","#666","#FFFFFF","#5C5C5C","25","#E0E0E0","#666666","#F2F2F2","#666666","#E0E0E0","#FFFFFF","#DDDDDD");
 
-	var darkTheme = {
-	  "font-color": "#111111",
-	  "main-border-size": "10",
-	  "main-bg": "#101010",
-	  "main-border-color": "#000000",
-	  "logo-urls": "placehold.it/200X200",
-	  "heading-color": "#FFFFFF",
-	  "cta-bg": "#FFFFFF",
-	  "button-color": "#FFFFFF",
-	  "border-radius": "10",
-	  "button-bg-color": "#101010",
-	  "footer-color": "#FFFFFF",
-	  "footer-bg": "#101010",
-	  "footer-button-color": "#AAAAAA",
-	  "footer-button-border": "#AAAAAA",
-	  "footer-button-bg-color": "#101010",
-	  "footer-border-color": "#DDDDDD"
-	};
+	var boldTheme = new ThemeClass("#101010","20","#B02A1D","#DD3626","placehold.it/200X200","#FFFFFF","#F2F2F2","#FFFFFF","5","#DD3626","#575757","#EDEDED","#DD3626","#DD3626","#EDEDED","#DDDDDD");
 
-	var moonTheme = {
-	  "font-color": "#101010",
-	  "main-border-size": "0",
-	  "main-bg": "#F2F2F2",
-	  "main-border-color": "#999999",
-	  "logo-urls": "placehold.it/200X200",
-	  "heading-color": "#666",
-	  "cta-bg": "#FFFFFF",
-	  "button-color": "#5C5C5C",
-	  "border-radius": "25",
-	  "button-bg-color": "#E0E0E0",
-	  "footer-color": "#666666",
-	  "footer-bg": "#F2F2F2",
-	  "footer-button-color": "#666666",
-	  "footer-button-border": "#E0E0E0",
-	  "footer-button-bg-color": "#FFFFFF",
-	  "footer-border-color": "#DDDDDD"
-	};
+	var blueTheme = new ThemeClass("#212121","5","#1A237E","#1A237E","placehold.it/200X200","#3392B5","#FFFFFF","#E8EAF6","0","#3F51B5","#E8EAF6","#3F51B5","#E8EAF6","#7986CB","#7986CB","#DDDDDD");
 
-	var boldTheme = {
-		"font-color": "#101010",
-		"main-border-size": "20",
-		"main-bg": "#B02A1D",
-		"main-border-color": "#DD3626",
-		"logo-urls": "placehold.it/200X200",
-		"heading-color": "#FFFFFF",
-		"cta-bg": "#F2F2F2",
-		"button-color": "#FFFFFF",
-		"border-radius": "5",
-		"button-bg-color": "#DD3626",
-		"footer-color": "#575757",
-		"footer-bg": "#EDEDED",
-		"footer-button-color": "#DD3626",
-		"footer-button-border": "#DD3626",
-		"footer-button-bg-color": "#EDEDED",
-	  	"footer-border-color": "#DDDDDD"
-		};
+	var googleTheme = new ThemeClass("#212121","10","#795548","#5D4037","placehold.it/200X200","#FFFFFF","#FFFFFF","#FFFFFF","25","#4CAF50","#FFFFFF","#5D4037","#FFFFFF","#4CAF50","#4CAF50","#DDDDDD");
 
-	var blueTheme = {
-	  "font-color": "#212121",
-	  "main-border-size": "5",
-	  "main-bg": "#1A237E",
-	  "main-border-color": "#1A237E",
-	  "logo-urls": "placehold.it/200X200",
-	  "heading-color": "#3392B5",
-	  "button-color": "#FFFFFF",
-	  "cta-bg": "#E8EAF6",
-	  "border-radius": "0",
-	  "button-bg-color": "#3F51B5",
-	  "footer-color": "#E8EAF6",
-	  "footer-bg": "#3F51B5",
-	  "footer-button-color": "#E8EAF6",
-	  "footer-button-border": "#7986CB",
-	  "footer-button-bg-color": "#7986CB",
-	  "footer-border-color": "#DDDDDD"
-	};
+	var amberTheme = new ThemeClass("#613D00","10","#FDFFD1","#FF5722","placehold.it/200X200","#FF5722","#FDFFD1","#FDFFD1","25","#FFA000","#FDFFD1","#FF5722","#FF5722","#FFA000","#FFA000","#DDDDDD");
 
-	var googleTheme = {
-	  "font-color": "#212121",
-	  "main-border-size": "10",
-	  "main-bg": "#795548",
-	  "main-border-color": "#5D4037",
-	  "logo-urls": "placehold.it/200X200",
-	  "heading-color": "#FFFFFF",
-	  "button-color": "#FFFFFF",
-	  "cta-bg": "#FFFFFF",
-	  "border-radius": "25",
-	  "button-bg-color": "#4CAF50",
-	  "footer-color": "#FFFFFF",
-	  "footer-bg": "#5D4037",
-	  "footer-button-color": "#FFFFFF",
-	  "footer-button-border": "#4CAF50",
-	  "footer-button-bg-color": "#4CAF50",
-	  "footer-border-color": "#DDDDDD"
-	};
-
-	var amberTheme = {
-	  "font-color": "#613D00",
-	  "main-border-size": "10",
-	  "main-bg": "#FDFFD1",
-	  "main-border-color": "#FF5722",
-	  "logo-urls": "placehold.it/200X200",
-	  "heading-color": "#FF5722",
-	  "button-color": "#FDFFD1",
-	  "cta-bg": "#FDFFD1",
-	  "border-radius": "25",
-	  "button-bg-color": "#FFA000",
-	  "footer-color": "#FDFFD1",
-	  "footer-bg": "#FF5722",
-	  "footer-button-color": "#FF5722",
-	  "footer-button-border": "#FFA000",
-	  "footer-button-bg-color": "#FFA000",
-	  "footer-border-color": "#DDDDDD"
-	};
-
-	var pinkTheme = {
-	  "font-color": "#EEEEEE",
-	  "main-border-size": "10",
-	  "main-bg": "#E91E63",
-	  "main-border-color": "#E91E63",
-	  "logo-urls": "placehold.it/200X200",
-	  "heading-color": "#FCE4EC",
-	  "button-color": "#FCE4EC",
-	  "cta-bg": "#263238",
-	  "border-radius": "15",
-	  "button-bg-color": "#E91E63",
-	  "footer-color": "#EEEEEE",
-	  "footer-bg": "#263238",
-	  "footer-button-color": "#E91E63",
-	  "footer-button-border": "#FCE4EC",
-	  "footer-button-bg-color": "#FCE4EC",
-	  "footer-border-color": "#DDDDDD"
-	};
+	var pinkTheme = new ThemeClass("#EEEEEE","10","#E91E63","#E91E63","placehold.it/200X200","#FCE4EC","#FCE4EC","#263238","15","#E91E63","#EEEEEE","#263238","#E91E63","#FCE4EC","#FCE4EC","#DDDDDD");
 
 // Themes Object, carrying all the different themes
 	var themes = {
@@ -324,7 +204,6 @@ function getFormValues() {
 			'footer-button-bg-color': $footerButtonBgColor,
 			'footer-button-color': $footerButtonColor,
 			'footer-button-border': $footerButtonBorder,
-			'footer-button-bg-color': $footerButtonBgColor,
 			'footer-border-color': $footerBorderColor
 		};
 
