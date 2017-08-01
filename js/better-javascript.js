@@ -1,30 +1,32 @@
+var ThemeClass = function(fontColor, mainBorderSize, mainBg, mainBorderColor, logoUrls, headingColor, ctaBg, buttonColor, borderRadius, buttonBgColor, footerColor, footerBg, footerButtonColor, footerButtonBorder, footerButtonBgColor, footerBorderColor) {
+	this['font-color'] = fontColor;
+	this['main-border-size'] = mainBorderSize;
+	this['main-bg'] = mainBg;
+	this['main-border-color'] = mainBorderColor;
+	this['logo-urls'] = logoUrls;
+	this['heading-color'] = headingColor;
+	this['button-color'] = buttonColor;
+	this['cta-bg'] = ctaBg;
+	this['border-radius'] = borderRadius;
+	this['button-bg-color'] = buttonBgColor;
+	this['footer-color'] = footerColor;
+	this['footer-bg'] = footerBg;
+	this['footer-button-bg-color'] = footerButtonBgColor;
+	this['footer-button-color'] = footerButtonColor;
+	this['footer-button-border'] = footerButtonBorder;
+	this['footer-border-color'] = footerBorderColor;
+};
+
 $(function() {
 
 	// Initialize all the theme variables
 	var $fontColor, $mainBorderSize, $mainBg, $mainBorderColor, $logoUrls, $headingColor, $ctaBg, $buttonColor, $borderRadius, $buttonBgColor, $footerColor, $footerBg, $footerButtonColor, $footerButtonBorder, $footerButtonBgColor
 	// Build the Preview on page load
 	var inputData = getFormValues();
-  var ThemeClass = function(fontColor, mainBorderSize, mainBg, mainBorderColor, logoUrls, headingColor, ctaBg, buttonColor, borderRadius, buttonBgColor, footerColor, footerBg, footerButtonColor, footerButtonBorder, footerButtonBgColor, footerBorderColor) {
-		this['font-color'] = fontColor;
-		this['main-border-size'] = mainBorderSize;
-		this['main-bg'] = mainBg;
-		this['main-border-color'] = mainBorderColor;
-		this['logo-urls'] = logoUrls;
-		this['heading-color'] = headingColor;
-		this['button-color'] = buttonColor;
-		this['cta-bg'] = ctaBg;
-		this['border-radius'] = borderRadius;
-		this['button-bg-color'] = buttonBgColor;
-		this['footer-color'] = footerColor;
-		this['footer-bg'] = footerBg;
-		this['footer-button-bg-color'] = footerButtonBgColor;
-		this['footer-button-color'] = footerButtonColor;
-		this['footer-button-border'] = footerButtonBorder;
-		this['footer-border-color'] = footerBorderColor;
-  };
+
 
   // Default theme that is called on page load
-  var initialTheme = new ThemeClass("#101010", "20", "#FFFFFF", "#999999", "placehold.it/200X200", "#101010", "#F2F2F2", "#FFFFFF", "25", "#999999", "#575757", "#F2F2F2", "#555555", "#999999", "#FAFAFA", "#DDDDDD");
+  var initialTheme = new ThemeClass("#101010","20","#FFFFFF","#999999","placehold.it/200X200","#101010","#F2F2F2","#FFFFFF","25","#999999","#575757","#F2F2F2","#555555","#999999","#FAFAFA","#DDDDDD");
 
 
   // Calling the initial theme on page load
@@ -41,15 +43,15 @@ $(function() {
 
 	var boldTheme = new ThemeClass("#101010","20","#B02A1D","#DD3626","placehold.it/200X200","#FFFFFF","#F2F2F2","#FFFFFF","5","#DD3626","#575757","#EDEDED","#DD3626","#DD3626","#EDEDED","#DDDDDD");
 
-	var blueTheme = new ThemeClass("#212121","5","#1A237E","#1A237E","placehold.it/200X200","#3392B5","#FFFFFF","#E8EAF6","0","#3F51B5","#E8EAF6","#3F51B5","#E8EAF6","#7986CB","#7986CB","#DDDDDD");
+	var blueTheme = new ThemeClass("#212121","5","#1A237E","#1A237E","placehold.it/200X200","#3392B5","#E8EAF6","#FFFFFF","0","#3F51B5","#E8EAF6","#3F51B5","#E8EAF6","#7986CB","#7986CB","#DDDDDD");
 
 	var googleTheme = new ThemeClass("#212121","10","#795548","#5D4037","placehold.it/200X200","#FFFFFF","#FFFFFF","#FFFFFF","25","#4CAF50","#FFFFFF","#5D4037","#FFFFFF","#4CAF50","#4CAF50","#DDDDDD");
 
 	var amberTheme = new ThemeClass("#613D00","10","#FDFFD1","#FF5722","placehold.it/200X200","#FF5722","#FDFFD1","#FDFFD1","25","#FFA000","#FDFFD1","#FF5722","#FF5722","#FFA000","#FFA000","#DDDDDD");
 
-	var pinkTheme = new ThemeClass("#EEEEEE","10","#E91E63","#E91E63","placehold.it/200X200","#FCE4EC","#FCE4EC","#263238","15","#E91E63","#EEEEEE","#263238","#E91E63","#FCE4EC","#FCE4EC","#DDDDDD");
+	var pinkTheme = new ThemeClass("#EEEEEE","10","#E91E63","#E91E63","placehold.it/200X200","#FCE4EC","#263238","#FCE4EC","15","#E91E63","#EEEEEE","#263238","#E91E63","#FCE4EC","#FCE4EC","#DDDDDD");
 
-// Themes Object, carrying all the different themes
+// Themes Object,carrying all the different themes
 	var themes = {
 		defaultTheme: defaultTheme,
 		summerTheme: summerTheme,
@@ -81,11 +83,6 @@ $(function() {
 	    makeRequest(getFormValues());
 	});
 
-	// Forcing the Select All on the Text Area with the code
-	$('#results').click(function() {
-		$(this).select();
-	});
-
 // Copy Text
 	$('#copy-text').click(function() {
 		copyToClipboard($('#results'));
@@ -104,7 +101,6 @@ function processResults(elem) {
 		var inputVal = elem.val();
 		if(elem.hasClass('number') && isNaN(inputVal)) {
 			elem.val(inputVal.match(/[0-9]*/));
-			console.log(elem.val());
 			makeRequest(getFormValues());
 			}
 			// If the input is based on color
@@ -114,7 +110,6 @@ function processResults(elem) {
 	    	if(inputVal.indexOf('#') < 0) {
 	    		userValue[inputId] = '#' + userValue[inputId];
 	    	}
-	    	console.log(userValue);
 			makeRequest(userValue);
     	}
 
@@ -141,6 +136,7 @@ function copyToClipboard(elem) {
 
 // Make the AJAX call
 function makeRequest(inputData) {
+	console.log(inputData);
 	// Check which template is selected
 	var temp = $('#emailTemplates').val();
 	// Call the template
@@ -188,24 +184,8 @@ function getFormValues() {
 		}
 
 		// Make the object with the inputted values
-		var inputDataObject = {
-			'font-color': $fontColor,
-			'main-border-size': $mainBorderSize,
-			'main-bg': $mainBg,
-			'main-border-color': $mainBorderColor,
-			'logo-urls': $logoUrls,
-			'heading-color': $headingColor,
-			'button-color': $buttonColor,
-			'cta-bg': $ctaBg,
-			'border-radius': $borderRadius,
-			'button-bg-color': $buttonBgColor,
-			'footer-color': $footerColor,
-			'footer-bg': $footerBg,
-			'footer-button-bg-color': $footerButtonBgColor,
-			'footer-button-color': $footerButtonColor,
-			'footer-button-border': $footerButtonBorder,
-			'footer-border-color': $footerBorderColor
-		};
+
+		var inputDataObject = new ThemeClass($fontColor,$mainBorderSize,$mainBg,$mainBorderColor,$logoUrls,$headingColor,$buttonColor,$ctaBg,$borderRadius,$buttonBgColor,$footerColor,$footerBg,$footerButtonBgColor,$footerButtonColor,$footerButtonBorder,$footerBorderColor);
 
 		return inputDataObject;
 	}

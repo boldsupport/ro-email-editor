@@ -1,4 +1,4 @@
-var ThemeClass = function(fontColor, mainBorderSize, mainBg, mainBorderColor, logoUrls, headingColor, buttonColor, ctaBg, borderRadius, buttonBgColor, footerColor, footerBg, footerButtonBgColor, footerButtonColor, footerButtonBorder, footerBorderColor) {
+var ThemeClass = function(fontColor, mainBorderSize, mainBg, mainBorderColor, logoUrls, headingColor, ctaBg, buttonColor, borderRadius, buttonBgColor, footerColor, footerBg, footerButtonColor, footerButtonBorder, footerButtonBgColor, footerBorderColor) {
 	this['font-color'] = fontColor;
 	this['main-border-size'] = mainBorderSize;
 	this['main-bg'] = mainBg;
@@ -43,13 +43,13 @@ $(function() {
 
 	var boldTheme = new ThemeClass("#101010","20","#B02A1D","#DD3626","placehold.it/200X200","#FFFFFF","#F2F2F2","#FFFFFF","5","#DD3626","#575757","#EDEDED","#DD3626","#DD3626","#EDEDED","#DDDDDD");
 
-	var blueTheme = new ThemeClass("#212121","5","#1A237E","#1A237E","placehold.it/200X200","#3392B5","#FFFFFF","#E8EAF6","0","#3F51B5","#E8EAF6","#3F51B5","#E8EAF6","#7986CB","#7986CB","#DDDDDD");
+	var blueTheme = new ThemeClass("#212121","5","#1A237E","#1A237E","placehold.it/200X200","#3392B5","#E8EAF6","#FFFFFF","0","#3F51B5","#E8EAF6","#3F51B5","#E8EAF6","#7986CB","#7986CB","#DDDDDD");
 
 	var googleTheme = new ThemeClass("#212121","10","#795548","#5D4037","placehold.it/200X200","#FFFFFF","#FFFFFF","#FFFFFF","25","#4CAF50","#FFFFFF","#5D4037","#FFFFFF","#4CAF50","#4CAF50","#DDDDDD");
 
 	var amberTheme = new ThemeClass("#613D00","10","#FDFFD1","#FF5722","placehold.it/200X200","#FF5722","#FDFFD1","#FDFFD1","25","#FFA000","#FDFFD1","#FF5722","#FF5722","#FFA000","#FFA000","#DDDDDD");
 
-	var pinkTheme = new ThemeClass("#EEEEEE","10","#E91E63","#E91E63","placehold.it/200X200","#FCE4EC","#FCE4EC","#263238","15","#E91E63","#EEEEEE","#263238","#E91E63","#FCE4EC","#FCE4EC","#DDDDDD");
+	var pinkTheme = new ThemeClass("#EEEEEE","10","#E91E63","#E91E63","placehold.it/200X200","#FCE4EC","#263238","#FCE4EC","15","#E91E63","#EEEEEE","#263238","#E91E63","#FCE4EC","#FCE4EC","#DDDDDD");
 
 // Themes Object,carrying all the different themes
 	var themes = {
