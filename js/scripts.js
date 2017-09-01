@@ -185,7 +185,7 @@ function getFormValues() {
 
 		// Make the object with the inputted values
 
-		var inputDataObject = new ThemeClass($fontColor,$mainBorderSize,$mainBg,$mainBorderColor,$logoUrls,$headingColor,$buttonColor,$ctaBg,$borderRadius,$buttonBgColor,$footerColor,$footerBg,$footerButtonBgColor,$footerButtonColor,$footerButtonBorder,$footerBorderColor);
+		var inputDataObject = new ThemeClass($fontColor, $mainBorderSize, $mainBg, $mainBorderColor, $logoUrls, $headingColor, $ctaBg, $buttonColor, $borderRadius, $buttonBgColor, $footerColor, $footerBg, $footerButtonColor, $footerButtonBorder, $footerButtonBgColor, $footerBorderColor);
 
 		return inputDataObject;
 	}

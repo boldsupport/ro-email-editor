@@ -229,13 +229,22 @@
                       <div class="field">
                         <label for="emailTemplates" class="field-label">You are currently viewing</label>
                         <select name="" id="emailTemplates" class="select-field">
-                          <option value="manageSubscription" selected="selected">Manage Subscription Order</option>
-                          <option value="deniedCreditCard">Denied Credit Card</option>
-                          <option value="refund">Refund Notification</option>
-                          <option value="cancel">Delete Subscription</option>
-                          <option value="upcomingCCExpiry">Upcoming Credit Card Expiry</option>
-                          <option value="prepaidSubscriptionExpiry">Prepaid Subscription Expiry</option>
-                          <option value="limitedSubscriptionExpiry">Limited Subscription Expiry</option>
+                            <option value="subscriptionUpdate">Subscription update to (to Customer)</option>
+                            <option value="upcomingShipment">Upcoming shipment (to Customer)</option>
+                            <option value="priceChange">Price Change (to Customer)</option>
+                            <option value="productChange">Product Change (to Customer)</option>
+                            <option value="productRemove">Product Remove (to Customer)</option>
+                            <option value="addToExistingSubscription">Item added to existing subscription</option>
+                            <option value="cancel">Delete subscription</option>
+                            <option value="refund">Refund Notification</option>
+                            <option value="manageSubscription" selected="selected">Manage Subscription Order</option>
+                            <option value="limitedSubscriptionExpiry">Limited Subscription Expiry (to Customer)</option>
+                            <option value="prepaidSubscriptionExpiry">Prepaid Subscription Expiry (to Customer)</option>
+                            <option value="upcomingCCExpiry">Upcoming Credit Card Expiry (to Customer)</option>
+                            <option value="buildABoxUpcomingShipment">Build a Box Upcoming Shipment (to Customer)</option>
+                            <option value="deniedCreditCard">Credit Card Denied (to Customer)</option>
+                            <option value="shippingAddressDenied">Shipping Address Denied (to Customer)</option>
+                            <option value="insufficientInventory">Insufficient Inventory Denied (to Customer)</option>
                         </select>
                       </div>
                     </div>
