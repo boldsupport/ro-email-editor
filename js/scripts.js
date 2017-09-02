@@ -74,7 +74,12 @@ $(function() {
 
 // Listen for a change on the template selector
 	$('#emailTemplates').change(function() {
-		makeRequest(getFormValues());
+		makeRequest(getFormValues(), function() {
+			var custom_table = document.querySelector('.custom-table');
+			if(custom_table) {
+				custom_table.innerHTML = '<table width="100%"><thead><tr><th>Product Image</th><th>Product Name</th><th>Variant Title</th><th>SKU</th><th>Price</th><th>Quantity</th></tr></thead><tbody><tr><td><img src="http://via.placeholder.com/100x100" style="max-width:100px; max-height:100px;"></td><td>Product A</td><td>Default Title</td><td></td><td>$79.99</td><td>2</td></tr><tr><td><img src="http://via.placeholder.com/100x100" style="max-width:100px; max-height:100px;"></td><td>Product B</td><td>Default Title</td><td></td><td>$14.99</td><td>1</td></tr><tr><td><img src="http://via.placeholder.com/100x100" style="max-width:100px; max-height:100px;"></td><td>Product C</td><td>Default Title</td><td></td><td>$14.99</td><td>2</td></tr></tbody></table>';
+			}
+		});
 	});
 
 	// Listen for the click on the submit button
@@ -135,7 +140,7 @@ function copyToClipboard(elem) {
 }
 
 // Make the AJAX call
-function makeRequest(inputData) {
+function makeRequest(inputData, callback) {
 	console.log(inputData);
 	// Check which template is selected
 	var temp = $('#emailTemplates').val();
@@ -152,6 +157,9 @@ function makeRequest(inputData) {
 	    	// Output the result on to the page
 			$('#results').val(result);
 			$('#preview').html(result);
+			if(typeof callback === "function") {
+				callback();
+			}
 	    });
 }
 
