@@ -26,30 +26,28 @@ $(function() {
 
 
   // Default theme that is called on page load
-  var initialTheme = new ThemeClass("#101010","20","#FFFFFF","#999999","placehold.it/200X200","#101010","#F2F2F2","#FFFFFF","25","#999999","#575757","#F2F2F2","#555555","#999999","#FAFAFA","#DDDDDD");
-
+  var defaultTheme = new ThemeClass("#101010","20","#FFFFFF","#999999","http://placehold.it/200X200","#101010","#F2F2F2","#FFFFFF","25","#999999","#575757","#F2F2F2","#555555","#999999","#FAFAFA","#DDDDDD");
 
   // Calling the initial theme on page load
-	makeRequest(initialTheme);
+	makeRequest(defaultTheme);
 
 	// Custom Themes
-	var defaultTheme = new ThemeClass("#101010","20","#FFFFFF","#999999","placehold.it/200X200","#101010","#F2F2F2","#FFFFFF","25","#999999","#575757","#F2F2F2","#555555","#999999","#FAFAFA","#DDDDDD");
 
-	var summerTheme = new ThemeClass("#0B3836","20","#20A39E","#FFBA49","placehold.it/200X200","#FFBA49","#F2ECD3","#166E6A","25","#FFBA49","#0B3836","#FFBA49","#20A39E","#999999","#F2ECD3","#DDDDDD");
+	var summerTheme = new ThemeClass("#0B3836","20","#20A39E","#FFBA49","http://placehold.it/200X200","#FFBA49","#F2ECD3","#166E6A","25","#FFBA49","#0B3836","#FFBA49","#20A39E","#999999","#F2ECD3","#DDDDDD");
 
-	var darkTheme = new ThemeClass("#111111","10","#101010","#000000","placehold.it/200X200","#FFFFFF","#FFFFFF","#FFFFFF","10","#101010","#FFFFFF","#101010","#AAAAAA","#AAAAAA","#101010","#DDDDDD");
+	var darkTheme = new ThemeClass("#111111","10","#101010","#000000","http://placehold.it/200X200","#FFFFFF","#FFFFFF","#FFFFFF","10","#101010","#FFFFFF","#101010","#AAAAAA","#AAAAAA","#101010","#DDDDDD");
 
-	var moonTheme = new ThemeClass("#101010","0","#F2F2F2","#999999","placehold.it/200X200","#666","#FFFFFF","#5C5C5C","25","#E0E0E0","#666666","#F2F2F2","#666666","#E0E0E0","#FFFFFF","#DDDDDD");
+	var moonTheme = new ThemeClass("#101010","0","#F2F2F2","#999999","http://placehold.it/200X200","#666","#FFFFFF","#5C5C5C","25","#E0E0E0","#666666","#F2F2F2","#666666","#E0E0E0","#FFFFFF","#DDDDDD");
 
-	var boldTheme = new ThemeClass("#101010","20","#B02A1D","#DD3626","placehold.it/200X200","#FFFFFF","#F2F2F2","#FFFFFF","5","#DD3626","#575757","#EDEDED","#DD3626","#DD3626","#EDEDED","#DDDDDD");
+	var boldTheme = new ThemeClass("#101010","20","#B02A1D","#DD3626","http://placehold.it/200X200","#FFFFFF","#F2F2F2","#FFFFFF","5","#DD3626","#575757","#EDEDED","#DD3626","#DD3626","#EDEDED","#DDDDDD");
 
-	var blueTheme = new ThemeClass("#212121","5","#1A237E","#1A237E","placehold.it/200X200","#3392B5","#E8EAF6","#FFFFFF","0","#3F51B5","#E8EAF6","#3F51B5","#E8EAF6","#7986CB","#7986CB","#DDDDDD");
+	var blueTheme = new ThemeClass("#212121","5","#1A237E","#1A237E","http://placehold.it/200X200","#3392B5","#E8EAF6","#FFFFFF","0","#3F51B5","#E8EAF6","#3F51B5","#E8EAF6","#7986CB","#7986CB","#DDDDDD");
 
-	var googleTheme = new ThemeClass("#212121","10","#795548","#5D4037","placehold.it/200X200","#FFFFFF","#FFFFFF","#FFFFFF","25","#4CAF50","#FFFFFF","#5D4037","#FFFFFF","#4CAF50","#4CAF50","#DDDDDD");
+	var googleTheme = new ThemeClass("#212121","10","#795548","#5D4037","http://placehold.it/200X200","#FFFFFF","#FFFFFF","#FFFFFF","25","#4CAF50","#FFFFFF","#5D4037","#FFFFFF","#4CAF50","#4CAF50","#DDDDDD");
 
-	var amberTheme = new ThemeClass("#613D00","10","#FDFFD1","#FF5722","placehold.it/200X200","#FF5722","#FDFFD1","#FDFFD1","25","#FFA000","#FDFFD1","#FF5722","#FF5722","#FFA000","#FFA000","#DDDDDD");
+	var amberTheme = new ThemeClass("#613D00","10","#FDFFD1","#FF5722","http://placehold.it/200X200","#FF5722","#FDFFD1","#FDFFD1","25","#FFA000","#FDFFD1","#FF5722","#FF5722","#FFA000","#FFA000","#DDDDDD");
 
-	var pinkTheme = new ThemeClass("#EEEEEE","10","#E91E63","#E91E63","placehold.it/200X200","#FCE4EC","#263238","#FCE4EC","15","#E91E63","#EEEEEE","#263238","#E91E63","#FCE4EC","#FCE4EC","#DDDDDD");
+	var pinkTheme = new ThemeClass("#EEEEEE","10","#E91E63","#E91E63","http://placehold.it/200X200","#FCE4EC","#263238","#FCE4EC","15","#E91E63","#EEEEEE","#263238","#E91E63","#FCE4EC","#FCE4EC","#DDDDDD");
 
 // Themes Object,carrying all the different themes
 	var themes = {
@@ -74,12 +72,7 @@ $(function() {
 
 // Listen for a change on the template selector
 	$('#emailTemplates').change(function() {
-		makeRequest(getFormValues(), function() {
-			var custom_table = document.querySelector('.custom-table');
-			if(custom_table) {
-				custom_table.innerHTML = '<table width="100%"><thead><tr><th>Product Image</th><th>Product Name</th><th>Variant Title</th><th>SKU</th><th>Price</th><th>Quantity</th></tr></thead><tbody><tr><td><img src="http://via.placeholder.com/100x100" style="max-width:100px; max-height:100px;"></td><td>Product A</td><td>Default Title</td><td></td><td>$79.99</td><td>2</td></tr><tr><td><img src="http://via.placeholder.com/100x100" style="max-width:100px; max-height:100px;"></td><td>Product B</td><td>Default Title</td><td></td><td>$14.99</td><td>1</td></tr><tr><td><img src="http://via.placeholder.com/100x100" style="max-width:100px; max-height:100px;"></td><td>Product C</td><td>Default Title</td><td></td><td>$14.99</td><td>2</td></tr></tbody></table>';
-			}
-		});
+		makeRequest(getFormValues());
 	});
 
 	// Listen for the click on the submit button
@@ -140,7 +133,7 @@ function copyToClipboard(elem) {
 }
 
 // Make the AJAX call
-function makeRequest(inputData, callback) {
+function makeRequest(inputData) {
 	console.log(inputData);
 	// Check which template is selected
 	var temp = $('#emailTemplates').val();
@@ -157,8 +150,9 @@ function makeRequest(inputData, callback) {
 	    	// Output the result on to the page
 			$('#results').val(result);
 			$('#preview').html(result);
-			if(typeof callback === "function") {
-				callback();
+			var custom_table = document.querySelector('.custom-table');
+			if(custom_table) {
+				custom_table.innerHTML = '<table width="100%"><thead><tr><th>Product Image</th><th>Product Name</th><th>Variant Title</th><th>SKU</th><th>Price</th><th>Quantity</th></tr></thead><tbody><tr><td><img src="http://via.placeholder.com/100x100" style="max-width:100px; max-height:100px;"></td><td>Product A</td><td>Default Title</td><td></td><td>$79.99</td><td>2</td></tr><tr><td><img src="http://via.placeholder.com/100x100" style="max-width:100px; max-height:100px;"></td><td>Product B</td><td>Default Title</td><td></td><td>$14.99</td><td>1</td></tr><tr><td><img src="http://via.placeholder.com/100x100" style="max-width:100px; max-height:100px;"></td><td>Product C</td><td>Default Title</td><td></td><td>$14.99</td><td>2</td></tr></tbody></table>';
 			}
 	    });
 }
