@@ -150,9 +150,17 @@ function makeRequest(inputData) {
 	    	// Output the result on to the page
 			$('#results').val(result);
 			$('#preview').html(result);
+
+			// Different display for emails with tables
 			var custom_table = document.querySelector('.custom-table');
 			if(custom_table) {
 				custom_table.innerHTML = '<table width="100%"><thead><tr><th>Product Image</th><th>Product Name</th><th>Variant Title</th><th>SKU</th><th>Price</th><th>Quantity</th></tr></thead><tbody><tr><td><img src="http://via.placeholder.com/100x100" style="max-width:100px; max-height:100px;"></td><td>Product A</td><td>Default Title</td><td></td><td>$79.99</td><td>2</td></tr><tr><td><img src="http://via.placeholder.com/100x100" style="max-width:100px; max-height:100px;"></td><td>Product B</td><td>Default Title</td><td></td><td>$14.99</td><td>1</td></tr><tr><td><img src="http://via.placeholder.com/100x100" style="max-width:100px; max-height:100px;"></td><td>Product C</td><td>Default Title</td><td></td><td>$14.99</td><td>2</td></tr></tbody></table>';
+			}
+
+			// Different display for the Product Update Email
+			var custom_table_change = document.querySelector('.custom-table-change');
+			if(custom_table_change) {
+				custom_table_change.innerHTML = '<table><tbody><tr><td>Your Awesome Product</td><td>$99.99</td></tr></tbody></table>';
 			}
 	    });
 }
