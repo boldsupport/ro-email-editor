@@ -81,9 +81,10 @@ $(function() {
 	});
 
 	$('#importFiles').on('change', function(e) {
-		$('#fileLabel').text(e.target.files[0].name);
-		
-		$('#import').addClass('btn-primary');
+		if(e.target.files.length >= 1) {
+			$('#fileLabel').text(e.target.files[0].name);
+			$('#import').addClass('btn-primary');
+		}
 	});
 
 	$('#import').on('click', function(e) {
@@ -95,7 +96,9 @@ $(function() {
 		}
 		var fileName = (document.getElementById('importFiles').files)[0].name;
 		var fileExt = fileName.substring(fileName.lastIndexOf('.'));
-
+		console.log(fileExt);
+		var fileExt = fileExt.toLowerCase();
+		console.log(fileExt);
 		if(fileExt !== '.json') {
 			alert('Please select a valid JSON theme file in order to import it');
 			return false;
@@ -104,7 +107,6 @@ $(function() {
 		var fr = new FileReader();
 
 		fr.onload = function(e) {
-			console.log(e);
 			var result = JSON.parse(e.target.result);
 			setFormValues(result);
 			makeRequest(result);
