@@ -109,8 +109,16 @@
                           </div>
                         </div>
 
+                        <h2 class="heading-two">Import your own theme</h2>
+                        
+                            <label id="fileLabel" for="importFiles">Click Import and choose the file that you previously downloaded</label>
+                            <input accept=".json" type="file" id="importFiles" class="file" value="Import a previous Theme">
+                            
+                            <label id="importButton" class="btn" for="importFiles">Import</label>
+                            <button id="import" class="btn">Apply</button>
 
                         <h2 class="heading-two">Header Section</h2>
+
                         <div class="url field">
                             <label for="logo-urls" class="field-label">Enter the URL for your logo</label>
                             <div class="field-group">
@@ -248,13 +256,18 @@
                       </div>
                     </div>
                     <div class="grid preview-header">
-                        <div class="column half preview-heading">
-                            <h3 class="heading-three desktop">Preview of the email</h3>
+                        <div class="column third preview-heading">
+                            <h3 class="heading-three desktop">Preview</h3>
                             <h3 class="heading-three mobile">Preview not available on Mobile</h3>
                         </div>
-                        <div class="column half preview-buttons">
-                              <button class="btn btn-primary open-modal btn-large" data-modal="#complex-modal" id="get-results">Get Code
-                              </button>
+                        <div class="column two-thirds preview-buttons">
+                                
+                            <a class="btn btn-primary btn-large" download="theme.json" id="saveTheme" href="#">Download Theme</a>
+
+                        
+                            <button class="btn btn-primary open-modal btn-large" data-modal="#complex-modal" id="get-results">Get Code
+                            </button>
+                                
                         </div>
                     </div>
 
