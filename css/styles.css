@@ -197,9 +197,22 @@ h1, .h1 {
 }
 
 .preview .chooseTemplates select {
-	display: inline-block;
 	float: left;
 	margin-left: 20px;
 	max-width: 300px;
 	font-size: 20px;
+}
+
+#importFiles {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+#fileLabel {
+	margin-right: 20px;
+	padding-top: 5px;
 }
