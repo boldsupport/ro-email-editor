@@ -126,12 +126,13 @@ function processResults(elem) {
 	}
 	// Else it should be coming from the forms
 	else {
+		$('[name="custom-themes"]:checked').removeAttr('checked').prop('checked', false);
 		var inputVal = elem.val();
 		if(elem.hasClass('number') && isNaN(inputVal)) {
 			elem.val(inputVal.match(/[0-9]*/));
 			makeRequest(getFormValues());
-			// If the input is based on color
-			}
+		}
+		// If the input is based on color
 		else if(elem.hasClass('jscolor')) {
     		var inputId = elem.attr('id');
 	    	var userValue = getFormValues();
