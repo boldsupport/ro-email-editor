@@ -85,6 +85,11 @@ $(function() {
 			$('#fileLabel').text(e.target.files[0].name);
 			$('#import').addClass('btn-primary');
 		}
+
+		else {
+			$('#fileLabel').text('No files selected');
+			$('#import').removeClass('btn-primary');
+		}
 	});
 
 	$('#import').on('click', function(e) {
@@ -96,9 +101,7 @@ $(function() {
 		}
 		var fileName = (document.getElementById('importFiles').files)[0].name;
 		var fileExt = fileName.substring(fileName.lastIndexOf('.'));
-		console.log(fileExt);
 		var fileExt = fileExt.toLowerCase();
-		console.log(fileExt);
 		if(fileExt !== '.json') {
 			alert('Please select a valid JSON theme file in order to import it');
 			return false;
@@ -109,6 +112,7 @@ $(function() {
 		fr.onload = function(e) {
 			var result = JSON.parse(e.target.result);
 			setFormValues(result);
+			$('[name="custom-themes"]:checked').removeAttr('checked').prop('checked', false);
 			makeRequest(result);
 		};
 
