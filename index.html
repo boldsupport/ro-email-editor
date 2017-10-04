@@ -33,7 +33,7 @@
             <div class="main-grid">
                 <div class="main-column">
                     <h1>Bold Commerce Email Editor for Recurring Orders</h1>
-                    <p class="intro">This is a basic email editor for the default email theme for Recurring Orders</p>
+                    <p class="intro">This is a basic email editor for the default email templates for Recurring Orders</p>
                     <form action="" id="info-form">
                         <h2 class="heading-two">Quick Themes</h2>
                         <div class="grid" id="custom-themes">
@@ -109,9 +109,17 @@
                           </div>
                         </div>
 
+                        <h2 class="heading-two">Import your own theme</h2>
+                        
+                            <label id="fileLabel" for="importFiles">Click Import and choose the file that you previously downloaded</label>
+                            <input accept=".json" type="file" id="importFiles" class="file" value="Import a previous Theme">
+                            
+                            <label id="importButton" class="btn" for="importFiles">Choose File</label>
+                            <button id="import" class="btn">Apply</button>
 
                         <h2 class="heading-two">Header Section</h2>
-                        <div class="url field">
+
+                        <div class="url field">for
                             <label for="logo-urls" class="field-label">Enter the URL for your logo</label>
                             <div class="field-group">
                               <input type="url" name="" id="logo-urls" class="input-field" value="http://placehold.it/200X200" placeholder="http://placehold.it/200X200" />
@@ -248,13 +256,18 @@
                       </div>
                     </div>
                     <div class="grid preview-header">
-                        <div class="column half preview-heading">
-                            <h3 class="heading-three desktop">Preview of the email</h3>
+                        <div class="column third preview-heading">
+                            <h3 class="heading-three desktop">Preview</h3>
                             <h3 class="heading-three mobile">Preview not available on Mobile</h3>
                         </div>
-                        <div class="column half preview-buttons">
-                              <button class="btn btn-primary open-modal btn-large" data-modal="#complex-modal" id="get-results">Get Code
-                              </button>
+                        <div class="column two-thirds preview-buttons">
+                                
+                            <a class="btn btn-primary btn-large" download="theme.json" id="saveTheme" href="#">Download Theme</a>
+
+                        
+                            <button class="btn btn-primary open-modal btn-large" data-modal="#complex-modal" id="get-results">Get Code
+                            </button>
+                                
                         </div>
                     </div>
 

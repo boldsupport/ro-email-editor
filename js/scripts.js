@@ -75,15 +75,49 @@ $(function() {
 		makeRequest(getFormValues());
 	});
 
-	// Listen for the click on the submit button
-	$('#get-results').on('click', function(e) {
-	    // Call the Template
-	    makeRequest(getFormValues());
-	});
-
 // Copy Text
 	$('#copy-text').click(function() {
 		copyToClipboard($('#results'));
+	});
+
+	$('#importFiles').on('change', function(e) {
+		if(e.target.files.length >= 1) {
+			$('#fileLabel').text(e.target.files[0].name);
+			$('#import').addClass('btn-primary');
+		}
+
+		else {
+			$('#fileLabel').text('No files selected');
+			$('#import').removeClass('btn-primary');
+		}
+	});
+
+	$('#import').on('click', function(e) {
+		e.preventDefault();
+		var files = document.getElementById('importFiles').files;
+		if(files.length <= 0) {
+			alert('Please select a valid JSON theme file in order to import it');
+			return false;
+		}
+		var fileName = (document.getElementById('importFiles').files)[0].name;
+		var fileExt = fileName.substring(fileName.lastIndexOf('.'));
+		var fileExt = fileExt.toLowerCase();
+		if(fileExt !== '.json') {
+			alert('Please select a valid JSON theme file in order to import it');
+			return false;
+		}
+
+		var fr = new FileReader();
+
+		fr.onload = function(e) {
+			var result = JSON.parse(e.target.result);
+			setFormValues(result);
+			$('[name="custom-themes"]:checked').removeAttr('checked').prop('checked', false);
+			makeRequest(result);
+		};
+
+		fr.readAsText(files[0]);
+
 	});
 
 // Process results on all changes
@@ -94,14 +128,15 @@ function processResults(elem) {
 			setFormValues(themes[themeName]);
 			makeRequest(themes[themeName]);
 	}
-	// Else it should be coming from the form
+	// Else it should be coming from the forms
 	else {
+		$('[name="custom-themes"]:checked').removeAttr('checked').prop('checked', false);
 		var inputVal = elem.val();
 		if(elem.hasClass('number') && isNaN(inputVal)) {
 			elem.val(inputVal.match(/[0-9]*/));
 			makeRequest(getFormValues());
-			}
-			// If the input is based on color
+		}
+		// If the input is based on color
 		else if(elem.hasClass('jscolor')) {
     		var inputId = elem.attr('id');
 	    	var userValue = getFormValues();
@@ -134,7 +169,10 @@ function copyToClipboard(elem) {
 
 // Make the AJAX call
 function makeRequest(inputData) {
-	console.log(inputData);
+	
+	var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(inputData));
+	$('#saveTheme').attr("href", dataStr);
+
 	// Check which template is selected
 	var temp = $('#emailTemplates').val();
 	// Call the template
